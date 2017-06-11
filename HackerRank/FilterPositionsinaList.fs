@@ -4,16 +4,14 @@
 open System
 [<EntryPoint>]
 let main args =
-    let n = Console.ReadLine() |> int
     let values = 
         Seq.initInfinite(fun _ -> Console.ReadLine())
-        |> Seq.takeWhile(fun s -> s |> isNull |> not)
+        |> Seq.takeWhile(isNull >> not)
         |> Seq.map int
         |> Seq.toList
-    let valueToPrint =
-        values
-        |> List.filter (fun x -> x < n)
-
-    for i in valueToPrint do    
-        printfn "%d" i
+        
+    let length = values.Length
+    //printfn "leg is %d" length
+    for i in 1 .. length do
+        if i%2 = 0 then printfn "%d" values.[i-1]
     0   
