@@ -89,8 +89,8 @@ let cartAPaid =
 printf "cartAPaid="; cartAPaid.Display
 
 // Cant add wrong logic since compile time check is there.
-let wrongcart = 
+(*let wrongcart = 
     match cartAPaid with
     | Empty state -> state.Pay 100m
     | PaidFor state -> state.Pay 100m
-    | Active state -> state.Pay 100m
+    | Active state -> state.Pay 100m * )
