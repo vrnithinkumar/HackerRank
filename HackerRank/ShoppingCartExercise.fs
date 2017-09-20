@@ -1,3 +1,5 @@
+// https://fsharpforfunandprofit.com/posts/designing-for-correctness/
+
 type CartItem = string
 
 type EmptyState = NoItems
