@@ -63,3 +63,25 @@ let PrintCart cart =
         | Paid state -> 
             printfn "Paid Cart with items : %A Price : %f " state.PaidItems state.Payment
 
+type ShoppingCart with
+   static member NewCart = ShoppingCart.Empty NoItems
+   member this.Add = addItemToCart this 
+   member this.Remove = removeItemInCart this 
+   member this.Display = PrintCart this 
+
+let emptyCart = ShoppingCart.NewCart
+emptyCart.Display
+
+let cartA = emptyCart.Add "A"
+printf "cartA="; cartA.Display
+
+let cartAB = cartA.Add "B"
+cartAB.Display
+
+// try to pay for cartA
+let cartAPaid = 
+    match cartAB with
+    | Empty _ | Paid _ -> cartA 
+    | Active state -> state.Pay 100m
+
+printf "cartAPaid="; cartAPaid.Display
